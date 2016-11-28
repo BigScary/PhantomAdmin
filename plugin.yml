@@ -1,0 +1,95 @@
+name: PhantomAdmin
+main: me.ryanhamshire.PhantomAdmin.PhantomAdmin
+version: 2.3.1
+commands:
+    SetNickname:
+        description: Sets a player's anonymous nickname.
+        usage: /SetNickname <player> <nickname>
+        aliases: [nickname, setname, setnick, nick, rename]
+        permission: phantomadmin.setnickname
+    SetChatFormat:
+        description: Sets the format of a player's anonymous public chat messages.
+        usage: /SetChatFormat <player> <format>.  Example $6[%nickname%] $7%message%
+        aliases: [chatformat, setformat, chatstyle, setchatstyle]
+        permission: phantomadmin.setchatformat
+    UnlockChat:
+        description: Unlocks chat for invisible players.
+        usage: /UnlockChat
+        aliases: [uc]
+        permission: phantomadmin.invisible
+    Vanish:
+        description: Makes you invisible to players who don't have permission to see invisible players.
+        usage: /Vanish
+        aliases: [van, v, invisible]
+        permission: phantomadmin.invisible
+    WhoIs:
+        description: Reveals the real player names for online phantom admins.
+        usage: /WhoIs
+        permission: phantomadmin.seeinvisible
+    Appear:
+        description: Makes you visible to all players.
+        usage: /Appear
+        aliases: [unvanish, reappear, visible]
+        permission: phantomadmin.invisible
+    PlayerInventory:
+        description: Accesses a player's inventory.
+        usage: /PlayerInventory <player>
+        aliases: [inventory, seeinventory, seeinv, accessinventory]
+        permission: phantomadmin.inventoryaccess
+    EnderInventory:
+        description: Accesses a player's ender chest inventory.
+        usage: /EnderInventory <player>
+        aliases: [enderchest]
+        permission: phantomadmin.inventoryaccess
+    PAReload:
+        description: Re-reads settings from PhantomAdmin's config file.
+        usage: /PAReload
+        permission: phantomadmin.reload
+permissions:
+    phantomadmin.*:
+        description: Grants permission for all functionality.
+        children:
+            phantomadmin.anonymous: true
+            phantomadmin.invisible: true
+            phantomadmin.silentjoinleave: true
+            phantomadmin.teleport: true
+            phantomadmin.setnickname: true
+            phantomadmin.setchatformat: true
+            phantomadmin.setnicknameother: true
+            phantomadmin.setchatformatother: true
+            phantomadmin.seeinvisible: true
+            phantomadmin.inventoryaccess: true
+            phantomadmin.reload: true
+    phantomadmin.anonymous:
+        description: Makes a player anonymous in public and private chat.
+        default: op
+    phantomadmin.invisible:
+        description: Makes a player invisible in the game world and silences join/leave messages.
+        default: op
+    phantomadmin.silentjoinleave:
+        description: Allows a player to connect and disconnect without sending a public notification message.
+        default: op
+    phantomadmin.teleport:
+        description: Grants permission to teleport in creative mode by using an Ender Pearl.
+        default: op
+    phantomadmin.setnickname:
+        description: Grants access to /SetNickname.
+        default: op
+    phantomadmin.setchatformat:
+        description: Grants access to /SetChatFormat.
+        default: op
+    phantomadmin.setnicknameother:
+        description: Allows for changing another player's nickname.
+        default: op
+    phantomadmin.setchatformatother:
+        description: Allows for changing another player's chat format.
+        default: op
+    phantomadmin.seeinvisible:
+        description: Allows a player to see invisible players.
+        default: op
+    phantomadmin.inventoryaccess:
+        description: Allows a player to access another player's inventory.
+        default: op
+    phantomadmin.reload:
+        description: Grants access to /PAReload.
+        default: op
